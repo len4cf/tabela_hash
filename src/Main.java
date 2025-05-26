@@ -7,6 +7,7 @@ public class Main {
 
         HashTable table1 = new HashTableHash1();
         HashTable table2 = new HashTableHash2();
+        System.out.println("Diretório atual: " + System.getProperty("user.dir"));
 
         long timeInsert1 = measureTime(() -> {
             for (String name : names) table1.insert(name);
@@ -29,6 +30,7 @@ public class Main {
         printReport("Hash Function 1", table1, timeInsert1, timeSearch1);
         printReport("Hash Function 2", table2, timeInsert2, timeSearch2);
     }
+
 
     private static void printReport(String label, HashTable table, long timeInsert, long timeSearch) {
         System.out.println("\n" + label);

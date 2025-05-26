@@ -1,16 +1,14 @@
-import java.util.LinkedList;
-
 public abstract class HashTable {
     protected int size = 32;
-    protected LinkedList<String>[] table;
+    protected MyLinkedList<String>[] table;
     protected int collisions = 0;
     protected int[] collisionsPerSlot;
 
     public HashTable() {
-        table = new LinkedList[size];
+        table = new MyLinkedList[size];
         collisionsPerSlot = new int[size];
         for (int i = 0; i < size; i++) {
-            table[i] = new LinkedList<>();
+            table[i] = new MyLinkedList<>();
             collisionsPerSlot[i] = 0;
         }
     }
@@ -29,6 +27,13 @@ public abstract class HashTable {
     public boolean search(String key) {
         int index = hash(key);
         return table[index].contains(key);
+    }
+
+    public void printTable() {
+        for (int i = 0; i < size; i++) {
+            System.out.print("Slot " + i + ": ");
+            table[i].printList();
+        }
     }
 
     public int getCollisions() {
